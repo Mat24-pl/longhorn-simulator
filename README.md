@@ -18,5 +18,7 @@ The current version does not support mobile devices. It is recommended to use a 
 
 ---
 
-👨‍💻 Author: mat24-pl
-📌 Website: mat24-pl.github.io/longhorn-simulator
+## 👨‍💻 Author: 
+mat24-pl
+## 📌 Website: 
+## [https://mat24-pl.github.io/longhorn-simulator/](https://mat24-pl.github.io/longhorn-simulator/)

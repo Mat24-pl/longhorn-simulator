@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="mat24-pl">
+    <link rel="shortcut icon" href="shortcut_icon.png">
+    <title>Windows Longhorn | Logon</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2c3e50, #4b6cb7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+}
+
+.login-box h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 10px;
+}
+
+.user p {
+    color: white;
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4b6cb7;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3b5998;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: white;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+}
+</style>
+</head>
+<body>
+    <div class="login-screen">
+        <div class="login-box" id="login-box">
+            <h2>Choose an user</h2>
+            <div class="user">
+                <img src="user-icon.png" alt="Avatar" class="avatar">
+                <p>User</p>
+            </div>
+            <input type="password" placeholder="Type 1290 to login" id="password">
+            <button onclick="login()">Login</button>
+            <audio id="boot-sound" src="longhorn-boot.wav"></audio>
+        </div>
+        <div id="message">Welcome</div>
+    </div>
+    <script>
+function login() {
+    let password = document.getElementById("password").value;
+    let bootSound = document.getElementById("boot-sound");
+    let loginBox = document.getElementById("login-box");
+    let message = document.getElementById("message");
+
+    if (password === "1290") {
+        loginBox.classList.add("fade-out");
+        bootSound.play();
+        message.style.display = "block";
+
+        setTimeout(() => {
+            window.location.href = "desktop.html";
+        }, 6000);
+    } else {
+        alert("Incorrect password!!!");
+    }
+}
+
+// Obsługa klawisza Enter do logowania
+        document.getElementById("password").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="mat24-pl">
+	<link rel="shortcut icon" href="shortcut_icon.png">
+	<title>Windows Longhorn | Loading</title>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.boot-screen {
+    text-align: center;
+}
+
+.logo {
+    width: 300px; /* Dopasuj do odpowiedniego rozmiaru */
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 10px;
+    background-color: #222;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.progress {
+    width: 50px;
+    height: 100%;
+    background-color: #008594;
+    position: absolute;
+    left: -50px;
+    animation: loading 1.5s infinite linear;
+}
+
+@keyframes loading {
+    from {
+        left: -50px;
+    }
+    to {
+        left: 200px;
+    }
+}
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="boot-screen">
+        <img src="longhorn-logo.png" alt="Windows Longhorn" class="logo">
+        <div class="loading-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <script>
+    setTimeout(() => {
+    document.querySelector(".boot-screen").classList.add("fade-out");
+    
+    setTimeout(() => {
+        window.location.href = "logon.html";
+    }, 1000);
+}, 5000);
+    </script>
+</body>
+</html>
